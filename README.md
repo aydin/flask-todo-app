@@ -33,3 +33,66 @@ tox
 ```shell
 docker-compose up
 ```
+
+## Request Examples
+* Register
+```shell
+curl -X POST \
+  http://127.0.0.1:5000/registration \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json; charset=utf-8' \
+  -d '{"username":"john","password":"johndoe"}'
+```
+__Get acess_token from response and use it for next requests in Authorization header.__
+* Create Todo item
+
+```shell
+curl -X POST \
+  http://127.0.0.1:5000/todos \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer your_access_token' \
+  -H 'Content-Type: application/json; charset=utf-8' \
+  -d '{"name":"todo item 1", "due_date": "2019-02-20"}'
+```
+* List Todo items
+```shell
+curl -X GET \
+  http://127.0.0.1:5000/todos \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer your_access_token' \
+  -H 'Content-Type: application/json; charset=utf-8'
+```
+
+* Update Todo item
+```shell
+curl -X PUT \
+  http://127.0.0.1:5000/todos/1 \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer your_access_token' \
+  -H 'Content-Type: application/json; charset=utf-8' \
+  -d '{"name": "updated todo item"}'
+```
+* Delete Todo item
+```shell
+curl -X DELETE \
+  http://127.0.0.1:5000/todos/2 \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer your_access_token' \
+  -H 'Content-Type: application/json; charset=utf-8'
+```
+* Revoke access token
+```shell
+curl -X POST \
+  http://127.0.0.1:5000/logout/access \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer your_access_token' \
+  -H 'Content-Type: application/json; charset=utf-8'
+```
+* Revoke refresh token
+```shell
+curl -X POST \
+  http://127.0.0.1:5000/logout/refresh \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer your_refresh_token' \
+  -H 'Content-Type: application/json; charset=utf-8'
+```

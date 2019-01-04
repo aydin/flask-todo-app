@@ -7,7 +7,7 @@ This repo demonstrates simple Todo App in Flask with following components:
 * Flask Jwt Extended
 
 ## Installation
-
+* Create virtualenv with python3 and activate it
 ```shell
 git clone https://github.com/aydin/flask-todo-app
 cd flask-todo-app
@@ -30,6 +30,7 @@ tox
 ```
 
 ## Deployment
+Set _SECRET_KEY_ and _JWT_SECRET_KEY_ in Dockerfile
 ```shell
 docker-compose up
 ```
@@ -86,6 +87,14 @@ curl -X POST \
   http://127.0.0.1:5000/logout/access \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer your_access_token' \
+  -H 'Content-Type: application/json; charset=utf-8'
+```
+* Refresh access token
+```shell
+curl -X POST \
+  http://127.0.0.1:5000//token/refresh \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer your_refresh_token' \
   -H 'Content-Type: application/json; charset=utf-8'
 ```
 * Revoke refresh token

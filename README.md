@@ -7,7 +7,7 @@ This repo demonstrates simple Todo App in Flask with following components:
 * Flask Jwt Extended
 
 ## Installation
-* Create virtualenv with python3 and activate it
+_(Create virtualenv with python3 and activate it)_
 ```shell
 git clone https://github.com/aydin/flask-todo-app
 cd flask-todo-app
